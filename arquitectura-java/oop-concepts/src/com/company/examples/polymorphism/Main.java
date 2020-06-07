@@ -13,6 +13,12 @@ public class Main {
         initialRun(engineer);
         initialRun(otherAthlete);
 
+        // Casting
+        Person matthew = new Athlete("Matthew", "Basketball");
+        matthew.run();
+        // Person -> Athlete
+        Athlete athleteMatthew = (Athlete) matthew;
+        System.out.println(athleteMatthew.getName() + " likes " + athleteMatthew.getSport());
     }
 
     /**
