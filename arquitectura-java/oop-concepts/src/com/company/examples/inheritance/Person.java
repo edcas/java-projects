@@ -11,4 +11,8 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void run() {
+        System.out.println(name + " runs at 5 kph");
+    }
 }

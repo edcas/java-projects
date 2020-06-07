@@ -11,4 +11,9 @@ public class Athlete extends Person {
     public void setSport(String sport) {
         this.sport = sport;
     }
+
+    @Override
+    public void run() {
+        System.out.println(this.getName() + " runs at 10 kph");
+    }
 }
