@@ -1,4 +1,4 @@
-package com.company.examples.composition;
+package com.company.examples.composition.operator;
 
 public class Person {
 
