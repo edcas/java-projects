@@ -112,3 +112,5 @@ hs_err_pid*
 arquitectura-java/oop-concepts/.idea/
 
 *.iml
+
+*/*/.idea/
