@@ -114,3 +114,7 @@ arquitectura-java/oop-concepts/.idea/
 *.iml
 
 */*/.idea/
+
+arquitectura-java/workspace/
+
+arquitectura-java/web/.settings/
