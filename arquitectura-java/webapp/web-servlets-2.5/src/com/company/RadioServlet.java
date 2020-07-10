@@ -1,4 +1,4 @@
-package com.arquitecturajava;
+package com.company;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServletFormulario002
+ * Servlet implementation class RadioServlet
  */
-public class ServletFormulario004 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class RadioServlet extends HttpServlet {
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PrintWriter pw = response.getWriter();
-		pw.println(request.getParameter("curso"));
+		PrintWriter writer = response.getWriter();
+		writer.println(request.getParameter("course"));
+
 	}
 
 }

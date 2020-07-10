@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>web</display-name>
+  <display-name>web-servlets-2.5</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -48,5 +48,59 @@
   <servlet-mapping>
     <servlet-name>CounterServlet</servlet-name>
     <url-pattern>/CounterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckboxServlet</display-name>
+    <servlet-name>CheckboxServlet</servlet-name>
+    <servlet-class>com.company.CheckboxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckboxServlet</servlet-name>
+    <url-pattern>/CheckboxServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RadioServlet</display-name>
+    <servlet-name>RadioServlet</servlet-name>
+    <servlet-class>com.company.RadioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RadioServlet</servlet-name>
+    <url-pattern>/RadioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectServlet</display-name>
+    <servlet-name>SelectServlet</servlet-name>
+    <servlet-class>com.company.SelectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectServlet</servlet-name>
+    <url-pattern>/SelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectMultipleServlet</display-name>
+    <servlet-name>SelectMultipleServlet</servlet-name>
+    <servlet-class>com.company.SelectMultipleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectMultipleServlet</servlet-name>
+    <url-pattern>/SelectMultipleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitServlet</display-name>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>com.company.InitServlet</servlet-class>
+    <init-param>
+      <param-name>start</param-name>
+      <param-value>5</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitServlet</servlet-name>
+    <url-pattern>/InitServlet</url-pattern>
   </servlet-mapping>
 </web-app>
