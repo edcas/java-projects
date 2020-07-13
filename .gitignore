@@ -112,3 +112,19 @@ hs_err_pid*
 arquitectura-java/oop-concepts/.idea/
 
 *.iml
+
+*/*/.idea/
+
+arquitectura-java/workspace/
+
+arquitectura-java/web/.settings/
+
+arquitectura-java/webapp/web-servlets-2.5/.settings/
+
+arquitectura-java/webapp/web-servlets-3.x/.settings/
+
+arquitectura-java/webapp/web-servlets-3.x/.classpath
+
+arquitectura-java/webapp/web-servlets-3.x/.project
+
+arquitectura-java/webapp/web-servlets-2.5/.project
