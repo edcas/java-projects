@@ -1,10 +1,12 @@
 package com.company.rest;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +21,50 @@ public class PersonRestService {
         people.add(new Person("Maggie", "Doe", 18));
     }
 
-    @RequestMapping("/people")
     @ResponseBody
+    @RequestMapping("/people")
     public List<Person> all() {
         return people;
     }
 
-    @RequestMapping("/people/{firstName}")
     @ResponseBody
+    @RequestMapping("/people/{firstName}")
     public Person find(@PathVariable String firstName) {
         return people.stream().filter(person -> person.getFirstName().equals(firstName)).findFirst().orElse(null);
+    }
+
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    @RequestMapping(value = "/people/{firstName}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable String firstName) {
+        people.removeIf(person -> person.getFirstName().equals(firstName));
+    }
+
+    @ResponseBody
+    // @ResponseStatus(value = HttpStatus.CREATED)
+    @RequestMapping(value = "/people", method = RequestMethod.POST)
+    public ResponseEntity<Person> create(@RequestBody Person person, UriComponentsBuilder builder) {
+        people.add(person);
+
+        HttpHeaders headers = new HttpHeaders();
+        UriComponents location = builder.path("/people/{firstName}").buildAndExpand(person.getFirstName());
+        headers.setLocation(location.toUri());
+
+        return new ResponseEntity<>(person, headers, HttpStatus.CREATED);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/people/{firstName}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@PathVariable String firstName, @RequestBody Person person) {
+        int index = people.indexOf(new Person(firstName));
+
+        if (index != -1) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        people.set(index, person);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }
