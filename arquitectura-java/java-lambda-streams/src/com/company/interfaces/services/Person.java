@@ -1,6 +1,4 @@
-package com.company.rest;
-
-import java.util.Objects;
+package com.company.interfaces.services;
 
 public class Person {
 
@@ -9,13 +7,6 @@ public class Person {
     private String lastName;
 
     private int age;
-
-    public Person() {
-    }
-
-    public Person(String firstName) {
-        this.firstName = firstName;
-    }
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -48,19 +39,6 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return firstName.equals(person.firstName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName);
-    }
-
-    @Override
     public String toString() {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
@@ -68,5 +46,11 @@ public class Person {
                 ", age=" + age +
                 '}';
     }
+
+    public static boolean isRetired(Person person) {
+        return person.getAge() >= 40;
+    }
+
+    public String id() { return String.format("%s-%d", this.getFirstName().toLowerCase(), this.getAge()); }
 
 }

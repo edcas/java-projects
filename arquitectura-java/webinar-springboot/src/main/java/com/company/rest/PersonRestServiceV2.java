@@ -11,8 +11,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-public class PersonRestService {
+@RestController
+@RequestMapping("/people/v2")
+public class PersonRestServiceV2 {
 
     private static final List<Person> people = new ArrayList<>();
 
@@ -21,28 +22,23 @@ public class PersonRestService {
         people.add(new Person("Maggie", "Doe", 18));
     }
 
-    @ResponseBody
-    @RequestMapping("/people")
+    @GetMapping
     public List<Person> all() {
         return people;
     }
 
-    @ResponseBody
-    @RequestMapping("/people/{firstName}")
+    @GetMapping("/{firstName}")
     public Person find(@PathVariable String firstName) {
         return people.stream().filter(person -> person.getFirstName().equals(firstName)).findFirst().orElse(null);
     }
 
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    @RequestMapping(value = "/people/{firstName}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/people/{firstName}")
     public void delete(@PathVariable String firstName) {
         people.removeIf(person -> person.getFirstName().equals(firstName));
     }
 
-    @ResponseBody
-    // @ResponseStatus(value = HttpStatus.CREATED)
-    @RequestMapping(value = "/people", method = RequestMethod.POST)
+    @PostMapping(value = "/")
     public ResponseEntity<Person> create(@RequestBody Person person, UriComponentsBuilder builder) {
         people.add(person);
 
@@ -53,8 +49,7 @@ public class PersonRestService {
         return new ResponseEntity<>(person, headers, HttpStatus.CREATED);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/people/{firstName}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{firstName}")
     public ResponseEntity<Void> update(@PathVariable String firstName, @RequestBody Person person) {
         int index = people.indexOf(new Person(firstName));
 
